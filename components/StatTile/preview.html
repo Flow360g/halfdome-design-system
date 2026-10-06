@@ -1,0 +1,12 @@
+<!-- @dsCard group="Data" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>StatTile preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.StatTile,{label:'ROAS',value:'4.3x',delta:'+18%',period:'vs Q2',emphasis:true}), h(E.StatTile,{label:'Blended CPA',value:'$42',delta:'-6%',period:'vs Q2'}), h(E.StatTile,{label:'New customers',value:'12,480',delta:'+32%',period:'vs Q2'})));
+</script>
+</body>
+</html>

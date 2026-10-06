@@ -1,0 +1,1 @@
+Thin `black-oak` line frames for showing work on devices: Android mobile, iPhone, tablet, laptop, desktop and TV. Place a screenshot behind the frame's screen area. They are transparent PNGs; on dark grounds put them on a `snow` panel.

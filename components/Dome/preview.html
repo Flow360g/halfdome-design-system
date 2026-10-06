@@ -1,0 +1,12 @@
+<!-- @dsCard group="Brand marks" height=140 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Dome preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.Dome,{size:96}), h(E.Dome,{colour:'purple',size:96}), h(E.Dome,{colour:'gold',size:96}), h(E.Dome,{colour:'black',size:96})));
+</script>
+</body>
+</html>

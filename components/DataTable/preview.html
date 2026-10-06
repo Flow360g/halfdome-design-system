@@ -1,0 +1,12 @@
+<!-- @dsCard group="Data" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DataTable preview</title></head>
+<body>
+<div id="root" class="hd-stack"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.DataTable,{columns:[{key:'c',label:'Channel'},{key:'s',label:'Spend',numeric:true},{key:'r',label:'Revenue',numeric:true},{key:'roas',label:'ROAS',numeric:true}],rows:[{c:'Meta',s:'$84,200',r:'$362,060',roas:'4.3x'},{c:'Google Search',s:'$61,500',r:'$221,400',roas:'3.6x'},{c:'YouTube',s:'$22,000',r:'$46,200',roas:'2.1x'}]})));
+</script>
+</body>
+</html>

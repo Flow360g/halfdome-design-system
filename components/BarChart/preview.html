@@ -1,0 +1,12 @@
+<!-- @dsCard group="Data" height=360 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>BarChart preview</title></head>
+<body>
+<div id="root" class="hd-stack"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.BarChart,{title:'Revenue by quarter',series:['This year','Last year'],data:[{label:'Q1','This year':4.3,'Last year':2.5},{label:'Q2','This year':2.5,'Last year':4.4},{label:'Q3','This year':3.5,'Last year':1.8},{label:'Q4','This year':4.5,'Last year':2.8}]})));
+</script>
+</body>
+</html>

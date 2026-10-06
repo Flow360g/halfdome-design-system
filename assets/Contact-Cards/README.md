@@ -1,0 +1,1 @@
+The office contact block (Level 8/459 Church St, Richmond VIC 3121, phone and halfdome.com.au) set in Libre Baskerville in each brand colour, from the Document Templates assets. Use on document back pages and email footers; for live text use the `ContactBlock` component. The phone number on these cards is as supplied; check it is current before printing.

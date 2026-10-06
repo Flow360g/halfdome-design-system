@@ -1,0 +1,12 @@
+<!-- @dsCard group="Brand marks" height=300 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Tagline preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.Tagline,{height:260}), h(E.Tagline,{dome:'purple',height:260}), h(E.Tagline,{dome:'gold',height:260})));
+</script>
+</body>
+</html>

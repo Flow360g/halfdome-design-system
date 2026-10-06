@@ -1,0 +1,12 @@
+<!-- @dsCard group="Typography" height=240 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Statement preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h('div',{style:{display:'flex',gap:48,flexWrap:'wrap'}}, h(E.Statement,{colour:'red'},'Stay classy'), h(E.Statement,{colour:'ink'},'Blow things up'))));
+</script>
+</body>
+</html>

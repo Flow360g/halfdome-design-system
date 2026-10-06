@@ -1,0 +1,33 @@
+<!-- @dsCard height=288 -->
+<style>
+  html,body{margin:0;background:var(--surface);}
+  .cover{position:relative;width:960px;height:288px;overflow:hidden;background:var(--surface);}
+  svg{position:absolute;inset:0;}
+  .seq{fill:var(--sequoia);} .cam{fill:var(--camas);} .fir{fill:var(--white-fir);}
+  .ink{fill:var(--ink);} .oak{fill:var(--black-oak);} .ground{fill:var(--surface);}
+  .tile{rx:var(--radius-md);ry:var(--radius-md);}
+  .tile-lg{rx:var(--radius-lg);ry:var(--radius-lg);}
+  .text{position:absolute;left:48px;bottom:32px;max-width:440px;}
+  .name{font-family:var(--font-serif);font-size:104px;line-height:.95;color:var(--ink);margin:0;font-weight:400;}
+  .tag{font-family:var(--font-sans);font-size:14px;line-height:20px;color:var(--ink-muted);margin:12px 0 0;}
+</style>
+<div class="cover">
+  <svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+    <!-- blocks: sequoia slab 208x236 (radius-lg), camas 168x136, white-fir 168x172, ink 104x128 (radius-md); all right of x=480
+         arrangement: one tall sequoia slab bleeding off the top, satellites stacked to the right and lower left, bleeding off edges
+         pattern: literal motif, the half dome from the logo, built as half-annuli (inner radius 0.56 of outer) in block colours; chosen because the dome is the brand's one mark
+         scales: gaps space-2 (8px), corners radius-md / radius-lg, dome radii 32 to 64 -->
+    <rect class="seq tile-lg" x="600" y="-24" width="208" height="248"/>
+    <rect class="cam tile" x="816" y="-12" width="168" height="136"/>
+    <rect class="fir tile" x="816" y="132" width="168" height="172"/>
+    <rect class="ink tile" x="488" y="176" width="104" height="128"/>
+    <path class="ground" d="M640 176 A64 64 0 0 1 768 176 L739.8 176 A35.8 35.8 0 0 0 668.2 176 Z"/>
+    <path class="oak" d="M840 268 A48 48 0 0 1 936 268 L914.9 268 A26.9 26.9 0 0 0 861.1 268 Z"/>
+    <path class="ground" d="M508 264 A32 32 0 0 1 572 264 L557.9 264 A17.9 17.9 0 0 0 522.1 264 Z"/>
+    <path class="seq" d="M848 100 A40 40 0 0 1 928 100 L910.4 100 A22.4 22.4 0 0 0 865.6 100 Z"/>
+  </svg>
+  <div class="text">
+    <p class="name">Half<br>Dome</p>
+    <p class="tag">Whole Potential.&#8482;</p>
+  </div>
+</div>

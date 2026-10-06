@@ -1,0 +1,12 @@
+<!-- @dsCard group="Data" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>InsightCard preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h('div',{className:'hd-grid-3',style:{padding:0,width:'100%'}}, h(E.InsightCard,{number:1},'Reels drove 61% of conversions at a 22% lower CPA than feed.'), h(E.InsightCard,{number:2},'Search demand peaked Thursday to Saturday; budgets now follow it.'), h(E.InsightCard,{number:3},'Broad audiences beat interest stacks once creative diversity passed eight concepts.'))));
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!-- @dsCard group="Data" height=240 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>FeatureBox preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h('div',{className:'hd-grid-3',style:{padding:0,width:'100%'}}, h(E.FeatureBox,{icon:'Strategy-1',title:'Strategy'},'Plans grounded in how brands actually grow.'), h(E.FeatureBox,{icon:'Targeting',title:'Media'},'Channels bought and optimised in-house.'), h(E.FeatureBox,{icon:'Growth',title:'Measurement'},'Incrementality first, platform numbers second.'))));
+</script>
+</body>
+</html>

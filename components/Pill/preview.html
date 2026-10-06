@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=80 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Pill preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.Pill,null,'Paid social'), h(E.Pill,{tone:'red'},'New'), h(E.Pill,{tone:'purple'},'Search'), h(E.Pill,{tone:'gold'},'Creative'), h(E.Pill,{tone:'dark'},'Always on')));
+</script>
+</body>
+</html>

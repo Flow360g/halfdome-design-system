@@ -1,0 +1,12 @@
+<!-- @dsCard group="People" height=300 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TeamMember preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.TeamMember,{photo:'../../assets/Imagery/HD_RABBIT_SKATEBOARD.png',name:'Half Domer Name',title:'Half Domer Title',colour:'purple'}), h(E.TeamMember,{photo:'../../assets/Imagery/HD_HOLIDAY_LEMON.png',name:'Half Domer Name',title:'Half Domer Title',colour:'gold',shape:2})));
+</script>
+</body>
+</html>

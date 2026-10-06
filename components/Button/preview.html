@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=96 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Button preview</title></head>
+<body>
+<div id="root" class="hd-row"></div>
+<script>
+  var E = window.HalfDome, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(E.Button,null,'Book a strategy session'), h(E.Button,{variant:'secondary'},'See our work'), h(E.Button,{variant:'quiet'},'Read the case study'), h(E.Button,{disabled:true},'Unavailable')));
+</script>
+</body>
+</html>

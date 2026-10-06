@@ -1,0 +1,82 @@
+/* Generated from tokens.json. Light is the default; add data-theme="dark" to any element for the dark theme. */
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('fonts/PlusJakartaSans-Variable.woff2') format('woff2'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('fonts/PlusJakartaSans-Italic-Variable.woff2') format('woff2'); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Libre Baskerville'; src: url('fonts/LibreBaskerville-Variable.woff2') format('woff2'); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Libre Baskerville'; src: url('fonts/LibreBaskerville-Italic-Variable.woff2') format('woff2'); font-weight: 400 700; font-style: italic; font-display: swap; }
+:root, [data-theme="light"] {
+  --sequoia: #8e1c02;
+  --camas: #b0a3d0;
+  --white-fir: #d2c663;
+  --snow: #f7f6f5;
+  --black-oak: #0f0f0f;
+  --white: #ffffff;
+  --surface: var(--white);
+  --surface-alt: var(--snow);
+  --ink: var(--black-oak);
+  --ink-muted: rgba(15, 15, 15, 0.72);
+  --accent: var(--sequoia);
+  --on-accent: var(--snow);
+  --hairline: rgba(15, 15, 15, 0.16);
+  --focus-ring: var(--sequoia);
+  --chart-1: var(--sequoia);
+  --chart-2: var(--black-oak);
+  --chart-3: var(--camas);
+  --chart-4: var(--white-fir);
+  --chart-grid: rgba(15, 15, 15, 0.12);
+  --positive: var(--black-oak);
+  --negative: var(--sequoia);
+}
+[data-theme="dark"] {
+  --surface: var(--black-oak);
+  --surface-alt: #1c1b1a;
+  --ink: var(--snow);
+  --ink-muted: rgba(247, 246, 245, 0.72);
+  --accent: var(--white-fir);
+  --on-accent: var(--black-oak);
+  --hairline: rgba(247, 246, 245, 0.2);
+  --focus-ring: var(--white-fir);
+  --chart-2: var(--snow);
+  --chart-grid: rgba(247, 246, 245, 0.16);
+  --positive: var(--white-fir);
+  --negative: var(--camas);
+}
+:root {
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --stroke-hairline: 1px;
+  --stroke-outline: 2px;
+  --stroke-icon: 6px;
+  --shadow-none: none;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-serif: "Libre Baskerville", Georgia, serif;
+}
+.statement { font-family: var(--font-sans); font-size: 72px; line-height: 1.0; font-weight: 800; letter-spacing: -0.02em; }
+.stat { font-family: var(--font-sans); font-size: 56px; line-height: 1.0; font-weight: 800; letter-spacing: -0.02em; }
+.display-xl { font-family: var(--font-serif); font-size: 64px; line-height: 1.05; font-weight: 400; letter-spacing: -0.01em; }
+.display-l { font-family: var(--font-serif); font-size: 44px; line-height: 1.1; font-weight: 400; }
+.display-italic { font-family: var(--font-serif); font-size: 32px; line-height: 1.2; font-weight: 400; font-style: italic; }
+.h1 { font-family: var(--font-sans); font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.01em; }
+.h2 { font-family: var(--font-sans); font-size: 28px; line-height: 36px; font-weight: 700; }
+.h3 { font-family: var(--font-sans); font-size: 22px; line-height: 30px; font-weight: 600; }
+.eyebrow { font-family: var(--font-sans); font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.08em; }
+.body-l { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.small { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
+.caption { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 500; }
+.slide-title { font-family: var(--font-sans); font-size: 64px; line-height: 1.05; font-weight: 700; letter-spacing: -0.01em; }
+.slide-subhead { font-family: var(--font-sans); font-size: 32px; line-height: 1.2; font-weight: 600; }
+.slide-body { font-family: var(--font-sans); font-size: 24px; line-height: 1.4; font-weight: 400; }
+.slide-date { font-family: var(--font-sans); font-size: 18px; line-height: 1.2; font-weight: 500; }

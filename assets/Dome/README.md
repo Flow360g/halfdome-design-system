@@ -1,0 +1,1 @@
+The standalone half dome, the brand icon. One file per brand colour: `Dome-Red` (`sequoia`), `Dome-Purple` (`camas`), `Dome-Green` (`white-fir`), `Dome-Black` (`black-oak`), `Dome-White` (`snow`, for dark grounds). Use for avatars, favicons, sign-offs and as a cover anchor. Transparent PNGs at 1800 x 960.
