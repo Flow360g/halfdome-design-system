@@ -102,18 +102,36 @@ body { margin: 0; font-family: var(--font-sans); background: var(--surface); col
 [data-theme="dark"] .hd-contact.hd-tone-red { color: var(--snow); }
 
 /* Slide (1920 x 1080, scaled by the consumer) */
-.hd-slide { position: relative; width: 1920px; height: 1080px; box-sizing: border-box; padding: var(--space-24); background: var(--snow); color: var(--black-oak); overflow: hidden; font-family: var(--font-sans); }
-.hd-slide-dark { background: var(--black-oak); color: var(--snow); }
-.hd-slide-headline { margin: 0 0 var(--space-12); max-width: 1400px; font: 700 64px/1.05 var(--font-sans); letter-spacing: -.01em; }
+.hd-slide { position: relative; width: 1920px; height: 1080px; box-sizing: border-box; padding: 212px var(--space-24) var(--space-24); background: var(--snow); color: var(--black-oak); overflow: hidden; font-family: var(--font-sans); }
+.hd-ground-black { background: var(--black-oak); }
+.hd-ground-red { background: var(--sequoia); }
+.hd-ground-purple { background: var(--camas); }
+.hd-ground-gold { background: var(--white-fir); }
+.hd-ink-snow { color: var(--snow); }
+.hd-ink-black { color: var(--black-oak); }
+/* Header: logo top left with a full-width rule beneath it (every slide except the cover; optional on the closing slide). */
+.hd-slide-header { position: absolute; left: var(--space-24); right: var(--space-24); top: 72px; height: 82px; box-sizing: border-box; }
+.hd-slide-header-rule { border-bottom: var(--stroke-outline) solid currentColor; }
+.hd-slide-dense { padding-top: var(--space-24); padding-bottom: 150px; }
+.hd-slide-headline { margin: 0 0 var(--space-12); max-width: 1500px; font: 700 64px/1.05 var(--font-sans); letter-spacing: -.01em; }
 .hd-slide-content { font: 400 24px/1.4 var(--font-sans); }
-.hd-slide-hero { margin: 0; max-width: 1200px; font: 700 96px/1.0 var(--font-sans); letter-spacing: -.02em; }
-.hd-slide-title-block { position: absolute; left: var(--space-24); bottom: 260px; }
-.hd-slide-body { margin: var(--space-6) 0 0; font: 400 28px/1.4 var(--font-sans); opacity: .8; }
-.hd-slide-dome { position: absolute; right: var(--space-24); bottom: 0; }
+/* Cover, divider and closing */
+.hd-slide-title-block { position: absolute; left: var(--space-24); top: 50%; transform: translateY(-50%); max-width: 880px; }
+.hd-slide-title-cover { max-width: 900px; }
+.hd-slide-cover-logo { margin-bottom: 120px; }
+.hd-slide-hero { margin: 0; font: 700 96px/1.0 var(--font-sans); letter-spacing: -.02em; }
+.hd-slide-subtitle { margin: var(--space-3) 0 0; font: italic 400 56px/1.2 var(--font-serif); }
+.hd-slide-title-block .hd-slide-date { margin-top: var(--space-6); }
+.hd-slide-image { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
+.hd-slide-bigdome { position: absolute; right: 72px; bottom: -42px; }
+.hd-slide-tagline { position: absolute; left: 64px; bottom: -12px; }
+/* Values statement and quote */
 .hd-slide-statement { position: absolute; left: var(--space-24); top: 50%; transform: translateY(-50%); font-size: 160px; }
 .hd-layout-quote .hd-quote { position: absolute; left: var(--space-24); top: 50%; transform: translateY(-50%); max-width: 1400px; }
 .hd-layout-quote .hd-quote blockquote { font-size: 72px; color: inherit; }
-.hd-slide-footer { position: absolute; left: var(--space-24); right: var(--space-24); bottom: var(--space-12); display: flex; justify-content: space-between; align-items: center; }
-.hd-layout-title .hd-slide-footer { right: auto; gap: var(--space-8); }
-.hd-slide-date { font: 500 18px/1.2 var(--font-sans); opacity: .72; }
-.hd-slide-dark .hd-slide-statement.hd-tone-red { color: var(--snow); }
+/* Dense content: no header rule, small logo in a bottom corner */
+.hd-slide-footer { position: absolute; left: var(--space-24); right: var(--space-24); bottom: 56px; display: flex; justify-content: space-between; align-items: center; }
+.hd-slide-footer-right { justify-content: flex-end; }
+.hd-slide-date { font: 500 18px/1.2 var(--font-sans); opacity: .72; margin: 0; }
+.hd-slide-date-corner { position: absolute; right: var(--space-24); bottom: 56px; }
+.hd-ink-snow .hd-slide-statement.hd-tone-red { color: var(--snow); }

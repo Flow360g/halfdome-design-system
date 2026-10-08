@@ -36,6 +36,6 @@ export interface TeamMemberProps { photo?: string; name: string; title: string; 
 export declare function TeamMember(props: TeamMemberProps): React.ReactElement;
 export interface ContactBlockProps { colour?: BrandColour | 'ink'; address?: string; suburb?: string; phone?: string; web?: string; className?: string }
 export declare function ContactBlock(props: ContactBlockProps): React.ReactElement;
-export interface SlideProps { layout?: 'content' | 'title' | 'statement' | 'quote'; title: string; subtitle?: string; by?: string; date?: string; accent?: BrandColour; theme?: 'light' | 'dark'; children?: React.ReactNode; className?: string }
+export interface SlideProps { layout?: 'cover' | 'content' | 'divider' | 'closing' | 'statement' | 'quote' | 'title'; ground?: 'snow' | 'black' | 'red' | 'purple' | 'gold'; ink?: 'black' | 'snow'; title: string; subtitle?: string; by?: string; date?: string; accent?: BrandColour; image?: string; shape?: 1 | 2 | 3 | 4 | 5 | 6; shapeColour?: BrandColour; domeColour?: BrandColour | 'black' | 'white'; rule?: boolean; dense?: boolean; logoCorner?: 'bottom-left' | 'bottom-right'; theme?: 'light' | 'dark'; children?: React.ReactNode; className?: string }
 export declare function Slide(props: SlideProps): React.ReactElement;
-declare global { interface Window { HalfDome: { config: { blobBase: string; assetBase: string } } & typeof import('./index') } }
+declare global { interface Window { HalfDome: { config: { useBlobs: boolean; blobBase: string; assetBase: string } } & typeof import('./index') } }
