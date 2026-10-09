@@ -10,39 +10,29 @@
   }
 
   // Uploaded brand marks, served from the design system's asset store.
-  var BLOB = {
-    'Logo-Black-Red': '84e8344d35cec3b947574dbabcc7a7f3',
-    'Logo-Black-Purple': '2f09cacc92e16a71326088f175fae495',
-    'Logo-Black-Green': '796d703dc2a2589a65dc1189ca8989b0',
-    'Logo-Black': '4881d8b6c21115aed15cb3c866d99f2b',
-    'Logo-White-Red': '956a0d8165c3eb64586112213e2254e6',
-    'Logo-White-Purple': '9fa187302d8a84d0c0f7054a3c79350f',
-    'Logo-White-Green': '6dbce91502f7e982b54f6a5ce7aa8c97',
-    'Logo-White': 'a90290d3f7faaba9422c1a6a62113656',
-    'Logo-Red-Black': '0ba68203715638c509cc1f9affa22134',
-    'Dome-Red': 'd7e733fc6daefddf71fe26767f0644ec',
-    'Dome-Purple': '44499aaf9374c4eba50704dde4a6c9ca',
-    'Dome-Green': '7722fd8e6eae5bc98e882ec0775f6718',
-    'Dome-Black': '6204aa3082cfaa82fe934fe8bcb9de73',
-    'Dome-White': '996bcc2b22a5a963dcec43f0259371e8',
-    'Tagline-Black-Red': '1da15fb6c2b026618c20b605f67b048d',
-    'Tagline-Black-Purple': '24efc05beb05ea4419ca89d831377b17',
-    'Tagline-Black-Green': '573299a4754b70ca8439a1b15a7d344c',
-    'Tagline-White-Red': 'deed82270b80c6aebd8d0271a693b0b8'
-  };
+  // Asset group -> file name (without .png) -> upload id in this design system's asset store.
+  var BLOB = {}; // Filled with uploaded asset ids when this repo is imported into a Claude design system.
   var config = { useBlobs: false, blobBase: '/_blob/', assetBase: '../../assets/' };
-  // Outside the Claude design system page (e.g. a git checkout) set useBlobs to false and the marks load from assets/.
+  // In a git checkout assets load from assetBase (relative to a components/<Name>/ page). Inside a Claude design system the BLOB map holds upload ids and useBlobs is true.
   function markPath(key) {
     var p = key.split('-'), kind = p.shift(), rest = p.join('-');
     if (kind === 'Logo') return 'Logos/Halfdome-Logo-' + rest + '.png';
     if (kind === 'Dome') return 'Dome/Dome-' + rest + '.png';
     return 'Tagline/Whole-Potential-' + rest + '.png';
   }
-  function blob(key) {
-    if (!config.useBlobs) return config.assetBase + markPath(key);
-    return BLOB[key] ? config.blobBase + BLOB[key] : null;
+  function blobId(path) {
+    var i = path.indexOf('/'), g = BLOB[path.slice(0, i)];
+    return g ? g[path.slice(i + 1).replace(/\.png$/, '')] : undefined;
   }
-  function asset(path) { return config.assetBase + path; }
+  function asset(path) {
+    var id = config.useBlobs && blobId(path);
+    return id ? config.blobBase + id : config.assetBase + path;
+  }
+  function blob(key) {
+    var path = markPath(key);
+    if (config.useBlobs && !blobId(path)) return null;
+    return asset(path);
+  }
   var COLOUR_FILE = { red: 'Red', purple: 'Purple', gold: 'Green', green: 'Green', white: 'White', black: 'Black' };
   function cap(s) { return COLOUR_FILE[s] || 'Red'; }
   // Marks default to the ink that reads on the current theme.
@@ -226,28 +216,69 @@
 
   /* ---------- Slides ---------- */
 
+  // Slide grounds and the marks that read on each (from the Half Dome deck template).
+  // Every coloured ground takes snow titles and a white logo; dark here means light ink.
+  var GROUNDS = {
+    snow:   { dark: false, logoDome: 'red',    bigDome: 'red',    shape: 'red' },
+    black:  { dark: true,  logoDome: 'purple', bigDome: 'purple', shape: 'red' },
+    red:    { dark: true,  logoDome: 'purple', bigDome: 'white',  shape: 'purple' },
+    purple: { dark: true,  logoDome: 'gold',   bigDome: 'red',    shape: 'red' },
+    gold:   { dark: true,  logoDome: 'red',    bigDome: 'red',    shape: 'red' }
+  };
+  var DEFAULT_GROUND = { cover: 'black', divider: 'red', closing: 'red' };
+
   function Slide(props) {
     var layout = props.layout || 'content';
-    var dark = props.theme === 'dark';
-    var accent = props.accent || 'red';
+    if (layout === 'title') layout = 'cover';
+    var ground = props.ground || (props.theme === 'dark' ? 'black' : DEFAULT_GROUND[layout] || 'snow');
+    if (!GROUNDS[ground]) ground = 'snow';
+    var g = GROUNDS[ground];
+    var ink = props.ink || (g.dark ? 'snow' : 'black');
+    var lightInk = ink === 'snow';
+    var dome = props.accent || g.logoDome;
+    var dense = !!props.dense && layout === 'content';
+    var rule = props.rule != null ? props.rule : (layout !== 'cover' && !dense);
     var children = [];
-    if (layout === 'title') {
-      children.push(h('div', { key: 'tl', className: 'hd-slide-title-block' },
-        h('h1', { className: 'hd-slide-hero' }, props.title),
-        props.subtitle ? h('p', { className: 'hd-slide-body' }, props.subtitle) : null));
-      children.push(h(Dome, { key: 'dome', colour: accent, size: 220, className: 'hd-slide-dome' }));
+    var logo = function (height, cls) { return h(Logo, { key: 'logo', ink: lightInk ? 'white' : 'black', dome: dome, height: height, className: cls }); };
+
+    if (layout !== 'cover' && !dense) {
+      children.push(h('header', { key: 'hd', className: cx('hd-slide-header', rule && 'hd-slide-header-rule') }, logo(52)));
+    }
+
+    if (layout === 'cover' || layout === 'divider' || layout === 'closing') {
+      children.push(h('div', { key: 'tb', className: 'hd-slide-title-block hd-slide-title-' + layout },
+        layout === 'cover' ? logo(64, 'hd-slide-cover-logo') : null,
+        h('h1', { className: 'hd-slide-hero' }, props.title || (layout === 'closing' ? 'Thank you!' : '')),
+        props.subtitle ? h('p', { className: 'hd-slide-subtitle' }, props.subtitle) : null,
+        props.date && layout === 'cover' ? h('p', { className: 'hd-slide-date' }, props.date) : null));
+      if (props.image) {
+        children.push(h('div', { key: 'img', className: 'hd-slide-image' },
+          h(ShapeImage, { src: props.image, shape: props.shape || 2, colour: props.shapeColour || g.shape, width: 1040 })));
+      } else if (layout !== 'cover') {
+        children.push(h(Dome, { key: 'bigdome', colour: props.domeColour || g.bigDome, size: 680, className: 'hd-slide-bigdome' }));
+      }
+      children.push(h(Tagline, { key: 'tag', ink: lightInk ? 'white' : 'black', dome: dome, height: 300, className: 'hd-slide-tagline' }));
     } else if (layout === 'statement') {
-      children.push(h(Statement, { key: 's', colour: accent, className: 'hd-slide-statement' }, props.title));
+      children.push(h(Statement, { key: 's', colour: props.accent || 'red', className: 'hd-slide-statement' }, props.title));
     } else if (layout === 'quote') {
       children.push(h(Quote, { key: 'q', by: props.by }, props.title));
     } else {
       children.push(h('h1', { key: 'h', className: 'hd-slide-headline' }, props.title));
       children.push(h('div', { key: 'b', className: 'hd-slide-content' }, props.children));
     }
-    children.push(h('footer', { key: 'f', className: 'hd-slide-footer' },
-      h(Logo, { ink: dark ? 'white' : 'black', dome: accent, height: 28 }),
-      h('span', { className: 'hd-slide-date' }, props.date || 'XX.XX.XX')));
-    return h('section', { className: cx('hd-slide', 'hd-layout-' + layout, dark && 'hd-slide-dark', props.className), 'data-accent': accent, 'data-theme': dark ? 'dark' : 'light' }, children);
+
+    if (dense) {
+      var corner = props.logoCorner === 'bottom-right' ? 'right' : 'left';
+      children.push(h('footer', { key: 'f', className: 'hd-slide-footer hd-slide-footer-' + corner }, logo(28),
+        props.date && corner === 'left' ? h('span', { className: 'hd-slide-date' }, props.date) : null));
+    } else if (props.date && layout !== 'cover') {
+      children.push(h('span', { key: 'd', className: 'hd-slide-date hd-slide-date-corner' }, props.date));
+    }
+
+    return h('section', {
+      className: cx('hd-slide', 'hd-layout-' + layout, 'hd-ground-' + ground, lightInk ? 'hd-ink-snow' : 'hd-ink-black', dense && 'hd-slide-dense', props.className),
+      'data-accent': dome, 'data-theme': g.dark ? 'dark' : 'light'
+    }, children);
   }
 
   var api = {

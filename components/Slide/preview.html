@@ -1,12 +1,29 @@
-<!-- @dsCard group="Slides" height=1400 -->
+<!-- @dsCard group="Slides" height=1080 -->
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><title>Slide preview</title></head>
 <body>
-<div id="root" class="hd-row"></div>
+<div id="root"></div>
 <script>
   var E = window.HalfDome, h = React.createElement;
-  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h('div',{style:{display:'flex',flexDirection:'column',gap:24}}, [['title',{layout:'title',title:'Q3 performance review',subtitle:'Prepared for the marketing team',date:'06.10.26'}],['content',{layout:'content',title:'Prospecting did the heavy lifting',date:'06.10.26',children:h(E.BarChart,{width:900,height:360,series:['This year','Last year'],data:[{label:'Q1','This year':4.3,'Last year':2.5},{label:'Q2','This year':2.5,'Last year':4.4},{label:'Q3','This year':3.5,'Last year':1.8},{label:'Q4','This year':4.5,'Last year':2.8}]})}],['statement',{layout:'statement',title:'Love mondays',accent:'gold',theme:'dark',date:'06.10.26'}]].map(function(x){return h('div',{key:x[0],style:{width:768,height:432,overflow:'hidden',position:'relative',flex:'none'}}, h('div',{style:{position:'absolute',left:0,top:0,transform:'scale(0.4)',transformOrigin:'0 0'}}, h(E.Slide,x[1])));}))));
+  var chart = h(E.BarChart, { width: 1000, height: 380, series: ['This year', 'Last year'], data: [{ label: 'Q1', 'This year': 4.3, 'Last year': 2.5 }, { label: 'Q2', 'This year': 2.5, 'Last year': 4.4 }, { label: 'Q3', 'This year': 3.5, 'Last year': 1.8 }, { label: 'Q4', 'This year': 4.5, 'Last year': 2.8 }] });
+  var dense = h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, zoom: 1.6 } }, ['Signal Labs report', 'Creative matrix', 'Internal brief', 'Production and feedback', 'Implementation', 'Reporting'].map(function (t, i) { return h(E.FeatureBox, { key: t, icon: ['Search', 'Testing-1', 'Pencil', 'Images', 'Rocket', 'Growth'][i], colour: 'red', title: t }, 'One or two sentences on what happens at this step and what it produces.'); }));
+  var slides = [
+    ['Cover', { layout: 'cover', ground: 'black', title: 'ABN Signal Labs', subtitle: 'Q2 FY27', image: '../../assets/Imagery/HD_BLUE_DISCO_ORANGE.png', shape: 2, shapeColour: 'red' }],
+    ['Content', { layout: 'content', title: 'Prospecting did the heavy lifting', children: chart }],
+    ['Divider', { layout: 'divider', ground: 'purple', title: 'Where to from here' }],
+    ['Dense content', { layout: 'content', dense: true, title: 'Our end-to-end process', children: dense }],
+    ['Closing', { layout: 'closing', ground: 'red', title: 'Thank you!' }],
+    ['Divider with image', { layout: 'divider', ground: 'gold', title: 'Results', image: '../../assets/Imagery/HD_MAGNIFY_DOME.png', shape: 4, shapeColour: 'red' }]
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(2, 576px)', gap: 24, padding: 24 } },
+      slides.map(function (s) {
+        return h('figure', { key: s[0], style: { margin: 0 } },
+          h('div', { style: { width: 576, height: 324, overflow: 'hidden', position: 'relative' } },
+            h('div', { style: { position: 'absolute', left: 0, top: 0, transform: 'scale(0.3)', transformOrigin: '0 0' } }, h(E.Slide, s[1]))),
+          h('figcaption', { style: { font: '500 13px/1.4 var(--font-sans)', color: 'var(--ink-muted)', marginTop: 8 } }, s[0]));
+      })));
 </script>
 </body>
 </html>
